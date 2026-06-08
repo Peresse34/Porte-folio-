@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Léo Peresse - Portfolio Interactif</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Léo Peresse - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
@@ -21,41 +21,95 @@
             line-height: 1.6;
             padding: 20px;
         }
-        header { text-align: center; padding: 40px 0; }
-        header h1 { color: var(--accent); font-size: 2.5rem; margin-bottom: 10px; }
-        header p { color: var(--text-muted); font-size: 1.1rem; }
+       
+        .hero {
+            max-width: 900px;
+            margin: 60px auto 40px auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--text-main);
+            margin-bottom: 5px;
+        }
+        .hero h1 span { color: var(--accent); font-style: italic; }
+        .hero .subtitle {
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+        .hero .bio {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+        .hero .tagline {
+            font-size: 0.95rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
-            max-width: 1200px;
-            margin: 40px auto;
+            max-width: 1100px;
+            margin: 50px auto;
         }
         .card {
             background: var(--card-bg);
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid #333;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease;
             cursor: pointer;
         }
-        .card:hover { transform: translateY(-5px); }
-        .card-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            background: #333;
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
         }
         .card-content { padding: 20px; }
-        .card-content h3 { color: var(--accent); margin-bottom: 10px; }
-        .card-content p { color: var(--text-muted); font-size: 0.95rem; }
+        .card-content .num { color: var(--accent); font-size: 0.85rem; font-weight: bold; margin-bottom: 5px; }
+        .card-content h3 { color: var(--text-main); margin-bottom: 10px; font-size: 1.25rem; }
+        .card-content p { color: var(--text-muted); font-size: 0.9rem; }
        
-        /* Modales */
+        .contact-section {
+            max-width: 600px;
+            margin: 60px auto;
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+        }
+        .contact-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            margin-bottom: 25px;
+            font-size: 2rem;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            text-align: left;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+        .contact-item { display: flex; flex-direction: column; }
+        .contact-item span { font-size: 0.8rem; color: var(--accent); text-transform: uppercase; }
+        .contact-item p { color: var(--text-main); font-size: 0.95rem; }
+
         .modal {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
+            background: rgba(0,0,0,0.9);
             justify-content: center; align-items: center;
             z-index: 1000; padding: 20px;
         }
@@ -64,91 +118,116 @@
             background: var(--card-bg);
             padding: 30px;
             border-radius: 16px;
-            max-width: 600px;
+            max-width: 700px;
             width: 100%;
             position: relative;
             border: 1px solid var(--accent);
+            max-height: 90vh;
+            overflow-y: auto;
         }
         .close-btn {
             position: absolute;
             top: 15px; right: 20px;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--text-muted);
             text-decoration: none;
         }
         .close-btn:hover { color: var(--accent); }
+        .modal h2 { font-family: 'Playfair Display', serif; color: var(--accent); margin-bottom: 15px; }
+        .modal p { color: var(--text-main); font-size: 0.95rem; margin-bottom: 20px; }
+       
+        @media (max-width: 600px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.2rem; }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Léo Peresse</h1>
-        <p>Graphisme & Communication Digitale | Portfolio Professionnel</p>
-    </header>
+    <div class="hero">
+        <p class="subtitle">Portfolio · Graphiste & Communication</p>
+        <h1>Léo <span>Peresse</span></h1>
+        <p class="bio">
+            Chargé de communication digitale orienté création graphique, stratégie de contenu et expérience client. Je transforme chaque projet en expérience visuelle mémorable.
+        </p>
+        <p class="tagline">Actuellement en Bachelor Communication (rentrée 2026), je recherche une alternance au sein d'une agence pour contribuer à des projets clients variés et ambitieux.</p>
+    </div>
 
     <div class="grid">
-        <!-- Projet 1 -->
         <div class="card" onclick="window.location.hash='#projet1'">
-            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="Identité Visuelle" class="card-img">
             <div class="card-content">
-                <h3>01. Identité Visuelle & Logos</h3>
-                <p>Création d'identités de marque uniques, déclinaisons de chartes graphiques et logos.</p>
+                <p class="num">01</p>
+                <h3>Solutions Natur'elles</h3>
+                <p>Création d'univers visuel naturel, élégant et bienveillant pour cartes de visite.</p>
             </div>
         </div>
 
-        <!-- Projet 2 -->
         <div class="card" onclick="window.location.hash='#projet2'">
-            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80" alt="Supports Print" class="card-img">
             <div class="card-content">
-                <h3>02. Design Éditorial & Print</h3>
-                <p>Affiches, flyers, plaquettes professionnelles et habillages de stands.</p>
+                <p class="num">02</p>
+                <h3>Axio Assurances</h3>
+                <p>Identité visuelle complète : logo moderne, cartes de visite et charte client claire.</p>
             </div>
         </div>
 
-        <!-- Projet 3 -->
         <div class="card" onclick="window.location.hash='#projet3'">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Communication Digitale" class="card-img">
             <div class="card-content">
-                <h3>03. Stratégie Digitale & UI</h3>
-                <p>Maquettes d'applications, refontes de sites web et visuels pour les réseaux sociaux.</p>
+                <p class="num">03</p>
+                <h3>Hard Rosoirs</h3>
+                <p>Création de logo et d'une gamme de textiles graphiques pour la scène techno.</p>
+            </div>
+        </div>
+
+        <div class="card" onclick="window.location.hash='#projet4'">
+            <div class="card-content text-start'">
+                <p class="num">04</p>
+                <h3>Monkey Burger</h3>
+                <p>Identité visuelle complète, menus et flyers Snapchat dynamiques et percutants.</p>
             </div>
         </div>
     </div>
 
-    <!-- Modale 1 -->
+    <div class="contact-section">
+        <h2>Travaillons ensemble</h2>
+        <div class="contact-grid">
+            <div class="contact-item"><span>Téléphone</span><p>06 17 50 53 08</p></div>
+            <div class="contact-item"><span>E-mail</span><p>leoprse@gmail.com</p></div>
+            <div class="contact-item"><span>LinkedIn</span><p>Peresse Léo</p></div>
+            <div class="contact-item"><span>Facebook</span><p>Léo Peresse</p></div>
+        </div>
+    </div>
+
     <div id="projet1" class="modal">
         <div class="modal-content">
             <a href="#" class="close-btn">&times;</a>
-            <h2>Identité Visuelle & Logos</h2>
-            <p style="margin-top: 15px; color: var(--text-muted);">
-                Développement d'univers de marque percutants. De la recherche typographique à la création du logotype final, j'élabore des chartes graphiques complètes garantissant une cohérence visuelle sur l'ensemble des points de contact d'une entreprise.
-            </p>
+            <h2>Solutions Natur'elles</h2>
+            <p>J'ai eu le plaisir de proposer trois designs de cartes de visite pour Solutions Natur'elles, une entreprise spécialisée dans les parfums inspirés de grandes marques, les cosmétiques bio et la médecine douce. Chaque design reflète leur engagement pour des produits naturels, élégants et bienveillants.</p>
         </div>
     </div>
 
-    <!-- Modale 2 -->
     <div id="projet2" class="modal">
         <div class="modal-content">
             <a href="#" class="close-btn">&times;</a>
-            <h2>Design Éditorial & Print</h2>
-            <p style="margin-top: 15px; color: var(--text-muted);">
-                Conception de supports imprimés de haute qualité. Maîtrise de la chaîne graphique, de la mise en page (grilles, typographies) jusqu'à la préparation des fichiers pour l'impression (gestion des profils colorimétriques, fonds perdus) pour des brochures, rapports annuels et outils de communication terrain.
-            </p>
+            <h2>Axio Assurances</h2>
+            <p>Je viens de finaliser un travail complet pour Axio Assurances, un courtier en assurance dynamique et engagé. Pour renforcer leur identity visuelle, j'ai eu le plaisir de réaliser : Un logo moderne et élégant, reflétant leur professionnalisme et leur approche centrée client. Des cartes de visite raffinées pour marquer les esprits dès le premier contact. Un visuel clair et percutant pour valoriser leurs solutions d'assurance efficace.</p>
         </div>
     </div>
 
-    <!-- Modale 3 -->
     <div id="projet3" class="modal">
         <div class="modal-content">
             <a href="#" class="close-btn">&times;</a>
-            <h2>Stratégie Digitale & UI</h2>
-            <p style="margin-top: 15px; color: var(--text-muted);">
-                Création d'interfaces numériques centrées sur l'utilisateur et d'atouts de communication digitale. Conception de wireframes, design d'interfaces (UI) modernes et engageantes, et production de contenus créatifs adaptés aux exigences des différents réseaux sociaux pour maximiser l'impact visuel en ligne.
-            </p>
+            <h2>Hard Rosoirs</h2>
+            <p>J'ai eu le plaisir de collaborer avec un groupe d'amis passionnés par la scène hard techno pour la création de leur logo et d'une série de t-shirts personnalisés. Un design percutant, à l'énergie débordante pour fédérer en événements ! Conçus pour que chacun puisse afficher fièrement leur identité, ces t-shirts sont prêts à enflammer la prochaine soirée !</p>
+        </div>
+    </div>
+
+    <div id="projet4" class="modal">
+        <div class="modal-content">
+            <a href="#" class="close-btn">&times;</a>
+            <h2>Monkey Burger</h2>
+            <p>Création du logo et de deux flyers Snapchat pour promouvoir les offres et événements de Monkey Burger, en accord avec l'univers jeune et dynamique de la marque.</p>
         </div>
     </div>
 
 </body>
 </html>
-
- 
