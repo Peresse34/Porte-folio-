@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    color: var(--light);
+    text-decoration: none;<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -64,10 +67,7 @@
   }
   .nav-logo {
     font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    letter-spacing: 0.05em;
-    color: var(--light);
-    text-decoration: none;
+
   }
   .nav-links {
     display: flex;
@@ -782,64 +782,458 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 const projects = [
   {
     num: '01', title: "Solutions Natur'elles",
-    img: document.querySelector('.project-card:nth-child(1) img').src,
-    context: "Solutions Natur'elles est spécialisée dans les parfums inspirés des grandes maisons, les cosmétiques bio et la médecine douce. La marque avait besoin de supports transmettant élégance, bienveillance et authenticité.",
-    problematique: "Créer des cartes de visite séduisant différents profils clients tout en restant cohérentes avec une identité de marque premium et naturelle.",
-    livrables: ["Conception du logo Chogan Solutions Natur'elles", "3 propositions de cartes de visite (univers vert, floral violet, doré épuré)", "Déclinaisons recto-verso pour usage print et numérique"],
-    resultats: "Version finale plébiscitée par la cliente. Les 3 déclinaisons ont réduit les allers-retours de validation. Carte utilisée sur tous les événements de vente directe.",
-    tools: "Adobe Illustrator · Photoshop · InDesign"
-  },
-  {
-    num: '02', title: "Axio Assurances",
-    img: document.querySelector('.project-card:nth-child(2) img').src,
-    context: "Axio Assurances est un courtier en assurance basé dans l'Hérault. La structure ne disposait d'aucune identité visuelle formalisée, freinant sa crédibilité auprès des prospects.",
-    problematique: "Concevoir une identité visuelle complète permettant à Axio Assurances de se positionner comme un acteur sérieux et orienté client.",
-    livrables: ["Logo (monogramme AA + signature 'Avec vous, on assure')", "Déclinaisons couleur digital et print", "Cartes de visite + flyer A5 recto-verso"],
-    resultats: "Identité déployée en moins de 3 semaines. Retour positif des clients sur le professionnalisme. Fort taux de mémorisation de marque lors d'un salon local.",
-    tools: "Adobe Illustrator · InDesign · Photoshop"
-  },
-  {
-    num: '03', title: "Hard Rosoirs",
-    img: document.querySelector('.project-card:nth-child(3) img').src,
-    context: "Hard Rosoirs est un collectif passionné par la scène hard techno locale. Le groupe organisait des soirées régulières et cherchait une identité forte pour asseoir sa présence en ligne.",
-    problematique: "Créer une identité graphique percutante incarnant l'énergie brute de la hard techno, lisible sur formats variés (réseaux sociaux, textile).",
-    livrables: ["Logo mascotte (arrosoir couronne, lunettes, style street/underground)", "Déclinaisons numérique et textile", "Design de t-shirts recto-verso", "Adaptation profil Instagram @hard_rosoirs"],
-    resultats: "Collection t-shirts entièrement vendue lors de la 1ère soirée (40 pièces). +180 abonnés Instagram en 2 semaines.",
-    tools: "Adobe Illustrator · Photoshop"
-  },
-  {
-    num: '04', title: "Monkey Burger",
-    img: document.querySelector('.project-card:nth-child(4) img').src,
-    context: "Monkey Burger est un restaurant de burgers artisanaux 100% maison à l'univers jeune et décalé. La marque voulait booster sa présence sur les réseaux sociaux et ses ventes.",
-    problematique: "Créer une identité mémorable et des supports promotionnels percutants pour se démarquer dans un marché très concurrentiel, avec un budget limité.",
-    livrables: ["Logo gorille musclé + typographie graffiti, palette rouge/noir/blanc", "2 flyers Snapchat format vertical", "Adaptation réseaux sociaux (stories, posts)"],
-    resultats: "+25 % de commandes lors des semaines de diffusion. Compte Snapchat : +220 abonnés en 1 mois.",
-    tools: "Adobe Illustrator · Photoshop · InDesign"
-  }
-];
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Léo Peresse | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fcfbf9;
+            --text-color: #1a1a1a;
+            --text-muted: #666666;
+            --accent-color: #8c7a6b;
+            --border-color: #e5e0db;
+            --card-bg: #ffffff;
+        }
 
-function openModal(idx) {
-  const p = projects[idx];
-  document.getElementById('modalImg').src = p.img;
-  document.getElementById('modalContent').innerHTML = `
-    <div class="modal-num">${p.num} / 04</div>
-    <h3 class="modal-title">${p.title}</h3>
-    <div class="modal-divider"></div>
-    <div class="modal-section"><h4>Contexte</h4><p>${p.context}</p></div>
-    <div class="modal-section"><h4>Problématique</h4><p>${p.problematique}</p></div>
-    <div class="modal-section"><h4>Livrables</h4><ul>${p.livrables.map(l=>`<li>${l}</li>`).join('')}</ul></div>
-    <div class="modal-section modal-results"><h4>Résultats</h4><p>${p.resultats}</p></div>
-    <p class="modal-tools">${p.tools}</p>
-  `;
-  document.getElementById('modalOverlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal(e) { if(e.target === document.getElementById('modalOverlay')) closeModalBtn(); }
-function closeModalBtn() {
-  document.getElementById('modalOverlay').classList.remove('active');
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModalBtn(); });
-</script>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        header {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        /* Grid Section */
+        .portfolio-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0,03);
+        }
+
+        .project-img-container {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            background-color: #f0ebe5;
+            position: relative;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+
+        .project-info {
+            padding: 30px;
+        }
+
+        .project-tag {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .project-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .project-info p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 0 40px 0;
+            border-top: 1px solid var(--border-color);
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .footer-contact h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .contact-link {
+            font-size: 18px;
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px solid var(--text-color);
+            padding-bottom: 4px;
+            transition: opacity 0.3s;
+        }
+
+        .contact-link:hover {
+            opacity: 0.7;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(26, 26, 26, 0.4);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: var(--bg-color);
+            width: 90%;
+            max-width: 900px;
+            max-height: 85vh;
+            border-radius: 4px;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            transform: translateY(30px);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            font-size: 30px;
+            cursor: pointer;
+            color: var(--text-color);
+            z-index: 1010;
+            transition: transform 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+        }
+
+        .close-modal:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal-hero-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .modal-body {
+            padding: 50px;
+        }
+
+        .modal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .modal-desc {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            white-space: pre-line; /* Permet les retours à la ligne */
+        }
+
+        @media (max-width: 768px) {
+            .project-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 40px; }
+            .modal-body { padding: 30px; }
+            .modal-hero-img { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="nav-container">
+                <div class="logo">LÉO PERESSE</div>
+                <nav>
+                    <a href="#projets">Projets</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Créateur de contenus interactifs & stratège digital.</h1>
+                <p class="hero-subtitle">Futur étudiant en Bachelor Communication, je combine compétences en marketing et expertise technique pour concevoir des expériences uniques et valoriser l'image des entreprises.</p>
+            </div>
+        </section>
+
+        <section id="projets" class="portfolio-section">
+            <h2 class="section-title">Réalisations</h2>
+            <div class="project-grid">
+                
+                <!-- Projet 1 -->
+                <div class="project-card" data-project="natur">
+                    <div class="project-img-container">
+                        <img src="" alt="Natur'O" class="project-img">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-tag">Identité Visuelle & Web</span>
+                        <h3>Projet Natur'O</h3>
+                        <p>Création d'une identité de marque éco-responsable et maquettage d'une plateforme web axée sur la préservation de l'environnement.</p>
+                    </div>
+                </div>
+
+                <!-- Projet 2 -->
+                <div class="project-card" data-project="ecom">
+                    <div class="project-img-container">
+                        <img src="" alt="E-Commerce" class="project-img">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-tag">Stratégie Digitale</span>
+                        <h3>Plateforme E-Commerce</h3>
+                        <p>Développement d'un tunnel de conversion optimisé et déploiement d'une stratégie de contenu pour booster les ventes en ligne.</p>
+                    </div>
+                </div>
+
+                <!-- Projet 3 -->
+                <div class="project-card" data-project="dashboard">
+                    <div class="project-img-container">
+                        <img src="" alt="Dashboard" class="project-img">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-tag">UI/UX Design</span>
+                        <h3>Dashboard Analytique</h3>
+                        <p>Conception d'une interface de suivi de données marketing épurée, intuitive et pensée pour faciliter la prise de décision.</p>
+                    </div>
+                </div>
+
+                <!-- Projet 4 -->
+                <div class="project-card" data-project="api">
+                    <div class="project-img-container">
+                        <img src="" alt="API" class="project-img">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-tag">Développement Technique</span>
+                        <h3>Intégration d'API Spécialisée</h3>
+                        <p>Mise en place et connexion de flux de données externes pour automatiser la diffusion de contenus dynamiques sur le web.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer id="contact">
+            <div class="footer-content">
+                <div class="footer-contact">
+                    <h2>Travaillons ensemble.</h2>
+                    <a href="mailto:leoprse@gmail.com" class="contact-link">leoprse@gmail.com</a>
+                    <p style="margin-top: 15px; color: var(--text-muted); font-size: 14px;">06 17 50 53 08 | Narbonne, France</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Fenêtre Modale Unique -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img id="modalImg" class="modal-hero-img" src="" alt="Image du projet">
+            <div class="modal-body">
+                <h2 id="modalTitle" class="modal-title">Titre du Projet</h2>
+                <p id="modalDesc" class="modal-desc">Description détaillée...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. Dictionnaire d'images d'illustration temporaires (Unsplash)
+        const projectImages = {
+            'natur': 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=800&q=80',
+            'ecom': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+            'dashboard': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
+            'api': 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80'
+        };
+
+        // 2. Dictionnaire des descriptions détaillées pour éviter le Lorem Ipsum
+        const projectDescriptions = {
+            'natur': 'Ce projet consistait à imaginer de bout en bout l\'identité graphique d\'une marque fictive éco-responsable.\n\nTravail réalisé :\n• Création du logo et de la charte graphique complète.\n• Réalisation de maquettes UI/UX responsives (Mobile et Desktop).\n• Rédaction de contenus optimisés SEO mettant en valeur la transition écologique.',
+            'ecom': 'Objectif : Optimiser le parcours d\'achat d\'un site de vente en ligne pour augmenter le taux de conversion.\n\nTravail réalisé :\n• Audit ergonomique des points de friction sur le panier d\'achat.\n• Mise en place d\'une stratégie Social Media (Instagram / TikTok) pour générer du trafic qualifié.\n• Analyse des performances de ventes via Google Analytics.',
+            'dashboard': 'Conception d\'une interface d\'administration (Back-Office) claire et épurée pour le suivi d\'indicateurs marketing de performance (KPIs).\n\nTravail réalisé :\n• Recherche utilisateur (UX) et wireframing.\n• Design d\'interface moderne respectant une hiérarchie visuelle forte.\n• Intégration de graphiques dynamiques et interactifs.',
+            'api': 'Projet technique axé sur la récupération et l\'automatisation de données distantes afin d\'alimenter une interface web en temps réel.\n\nTravail réalisé :\n• Connexion et requêtage asynchrone sur des API REST.\n• Traitement des flux de données reçus (JSON) et structuration de l\'affichage HTML.\n• Gestion de l\'affichage dynamique des contenus multimédias.'
+        };
+
+        // 3. Attribution automatique des images aux cartes de la grille
+        document.querySelectorAll('.project-card').forEach(card => {
+            const projId = card.getAttribute('data-project');
+            const imgElement = card.querySelector('.project-img');
+            if (projId && projectImages[projId] && imgElement) {
+                imgElement.src = projectImages[projId];
+            }
+        });
+
+        // 4. Gestion de la modale au clic
+        const modal = document.getElementById('projectModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+        const closeBtn = document.querySelector('.close-modal');
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const projId = card.getAttribute('data-project');
+                const title = card.querySelector('h3').innerText;
+
+                // Remplissage avec les données propres au projet
+                if (projectImages[projId]) modalImg.src = projectImages[projId];
+                modalTitle.innerText = title;
+                modalDesc.innerText = projectDescriptions[projId] || "Pas de description disponible.";
+
+                // Affichage fluide
+                modal.style.display = 'flex';
+                setTimeout(() => { modal.classList.add('active'); }, 10);
+            });
+        });
+
+        // Fermetures de la modale
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+        function closeModal() {
+            modal.classList.remove('active');
+            setTimeout(() => { modal.style.display = 'none'; }, 400);
+        }
+    </script>
 </body>
 </html>
